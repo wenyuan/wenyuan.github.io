@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL 的安装与卸载 | CODING 修炼小册</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script charset="utf-8" src="/js/main.js"></script>
+    <link rel="alternate" type="application/atom+xml" href="https://wenyuan.github.io/atom.xml" title="CODING 修炼小册 Atom Feed">
+    <link rel="alternate" type="application/json" href="https://wenyuan.github.io/feed.json" title="CODING 修炼小册 JSON Feed">
+    <link rel="alternate" type="application/rss+xml" href="https://wenyuan.github.io/rss.xml" title="CODING 修炼小册 RSS Feed">
+    <meta name="description" content="前端 / 后端 / 全栈开发">
+    <meta property="og:url" content="/backend/mysql/installation-of-mysql.html">
+    <meta property="og:site_name" content="CODING 修炼小册">
+    <meta property="og:title" content="MySQL 的安装与卸载">
+    <meta property="og:description" content="MySQL 的安装与卸载 &quot; 以安装 MySQL 8.x.x 为例。&quot; Windows 下安装 &quot; Windows 下的 MySQL 不能用于生产，一般用于开发目的或者尝鲜体验。&quot; 安装 MySQL 我比较喜欢免安装版本的，轻便干净，删起来方便。 到官网的开发者专区下载 MySQL（Community版）免安装软件包： 下载地址; 安装包名字：mysql-8">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh-CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:alt" content="CODING 修炼小册">
+    <meta property="article:author" content="wenyuan">
+    
+    <link rel="preload" href="/assets/css/0.styles.458593ce.css" as="style"><link rel="preload" href="/assets/js/app.ee898a11.js" as="script"><link rel="preload" href="/assets/js/vendors~layout-Layout.10cc4d4f.js" as="script"><link rel="preload" href="/assets/js/vendors~layout-Blog~layout-Layout~layout-NotFound.134d651c.js" as="script"><link rel="preload" href="/assets/js/page-MySQL的安装与卸载.c971a208.js" as="script"><link rel="prefetch" href="/assets/js/layout-Blog.f025f3ce.js"><link rel="prefetch" href="/assets/js/layout-Layout.f12fcd54.js"><link rel="prefetch" href="/assets/js/layout-NotFound.d701751d.js"><link rel="prefetch" href="/assets/js/page-@property装饰器.e7ee0976.js"><link rel="prefetch" href="/assets/js/page-Arrayprototypeincludes().5a7fbf5b.js"><link rel="prefetch" href="/assets/js/page-Array扩展.66167d75.js"><link rel="prefetch" href="/assets/js/page-BFC.baff4c92.js"><link rel="prefetch" href="/assets/js/page-BigInt.30d84835.js"><link rel="prefetch" href="/assets/js/page-B端产品文案指南.5ebc4be4.js"><link rel="prefetch" href="/assets/js/page-CSRF攻击.5bf33999.js"><link rel="prefetch" href="/assets/js/page-CSS.53770e1b.js"><link rel="prefetch" href="/assets/js/page-CSS引入方式.60538ac2.js"><link rel="prefetch" href="/assets/js/page-CSS规范.42512016.js"><link rel="prefetch" href="/assets/js/page-CSS问题.1580a163.js"><link rel="prefetch" href="/assets/js/page-Class.f6e95b7a.js"><link rel="prefetch" href="/assets/js/page-CodeFormat工程化实践.8a913b21.js"><link rel="prefetch" href="/assets/js/page-CodeReview.3bd75c2a.js"><link rel="prefetch" href="/assets/js/page-Django+JWT实现Token认证.99112e8e.js"><link rel="prefetch" href="/assets/js/page-Django.3e1466e0.js"><link rel="prefetch" href="/assets/js/page-Django与Celery的集成.f2c63f32.js"><link rel="prefetch" href="/assets/js/page-Django与Channels的集成.96ed3b48.js"><link rel="prefetch" href="/assets/js/page-Django与Guardian的集成.40956894.js"><link rel="prefetch" href="/assets/js/page-Django内置权限系统使用.eb991380.js"><link rel="prefetch" href="/assets/js/page-Django内置权限系统扩展.8dd44266.js"><link rel="prefetch" href="/assets/js/page-Django用户模型扩展重写.8b0bc229.js"><link rel="prefetch" href="/assets/js/page-Django设置Redis作为缓存.a94896b8.js"><link rel="prefetch" href="/assets/js/page-ES6-ES12新特性.b16e4edc.js"><link rel="prefetch" href="/assets/js/page-ES中的概念与名词.beb451ec.js"><link rel="prefetch" href="/assets/js/page-ES的安装.efdd2be3.js"><link rel="prefetch" href="/assets/js/page-ES集群性能优化小记录.a3d87349.js"><link rel="prefetch" href="/assets/js/page-Elasticsearch.cb192049.js"><link rel="prefetch" href="/assets/js/page-Flexbox布局.412173b6.js"><link rel="prefetch" href="/assets/js/page-Function扩展.b7ee8f1d.js"><link rel="prefetch" href="/assets/js/page-Generator.0b47bec3.js"><link rel="prefetch" href="/assets/js/page-Git.eef36fff.js"><link rel="prefetch" href="/assets/js/page-GitHooks工程化实践.93233ab3.js"><link rel="prefetch" href="/assets/js/page-Git工作流—分支策略.361883f9.js"><link rel="prefetch" href="/assets/js/page-Git提交信息规范.62b55eca.js"><link rel="prefetch" href="/assets/js/page-Grid布局.3264bdb5.js"><link rel="prefetch" href="/assets/js/page-HTML.21e799cc.js"><link rel="prefetch" href="/assets/js/page-HTML基本结构.05d76652.js"><link rel="prefetch" href="/assets/js/page-HTML规范.b0cb6c9c.js"><link rel="prefetch" href="/assets/js/page-HTML问题.933a169f.js"><link rel="prefetch" href="/assets/js/page-HTTP错误状态码及排查路径.338ecca8.js"><link rel="prefetch" href="/assets/js/page-Home.dc7ad46e.js"><link rel="prefetch" href="/assets/js/page-IP地址.5712895f.js"><link rel="prefetch" href="/assets/js/page-JSON扩展.baf7099f.js"><link rel="prefetch" href="/assets/js/page-JavaScript.3c035f29.js"><link rel="prefetch" href="/assets/js/page-JavaScript手写函数.e1c61216.js"><link rel="prefetch" href="/assets/js/page-JavaScript规范.f1420d2b.js"><link rel="prefetch" href="/assets/js/page-Linux系统是如何收发网络包的？.650742df.js"><link rel="prefetch" href="/assets/js/page-Map.5efec9d7.js"><link rel="prefetch" href="/assets/js/page-Model字段与属性.3e21f4b6.js"><link rel="prefetch" href="/assets/js/page-Module.c66bc10d.js"><link rel="prefetch" href="/assets/js/page-MySQL.45006376.js"><link rel="prefetch" href="/assets/js/page-MySQL主键和自增ID.53b02008.js"><link rel="prefetch" href="/assets/js/page-MySQL事务的隔离性.2c81626b.js"><link rel="prefetch" href="/assets/js/page-MySQL常用命令.e183af17.js"><link rel="prefetch" href="/assets/js/page-MySQL数据库设计规范.8705b1e2.js"><link rel="prefetch" href="/assets/js/page-MySQL数据类型.d84e88b7.js"><link rel="prefetch" href="/assets/js/page-Nginx.223dff7e.js"><link rel="prefetch" href="/assets/js/page-Nginx安全访问控制.0cbaf933.js"><link rel="prefetch" href="/assets/js/page-Nginx常用命令.8439d2ef.js"><link rel="prefetch" href="/assets/js/page-Nginx文件列表功能.fc6154d4.js"><link rel="prefetch" href="/assets/js/page-Nginx的卸载.9825d021.js"><link rel="prefetch" href="/assets/js/page-Nginx的安装.8a8269bd.js"><link rel="prefetch" href="/assets/js/page-Nginx设置开机自启.f5b43a7c.js"><link rel="prefetch" href="/assets/js/page-Nginx部署Https安全认证.61624194.js"><link rel="prefetch" href="/assets/js/page-Nginx部署前后端分离项目.2be7ba8d.js"><link rel="prefetch" href="/assets/js/page-Nginx限流常用模块.1e57f519.js"><link rel="prefetch" href="/assets/js/page-Nginx页面安全认证.9685900f.js"><link rel="prefetch" href="/assets/js/page-Ngixn配置文件模板.ccf33c9d.js"><link rel="prefetch" href="/assets/js/page-Ngixn配置文件详解.9549f442.js"><link rel="prefetch" href="/assets/js/page-Number.8345a771.js"><link rel="prefetch" href="/assets/js/page-ORM增删改操作.bec88e2f.js"><link rel="prefetch" href="/assets/js/page-ObjectfromEntries().ad6f7c82.js"><link rel="prefetch" href="/assets/js/page-Object扩展.22bf1c10.js"><link rel="prefetch" href="/assets/js/page-PEP8风格.44d2007a.js"><link rel="prefetch" href="/assets/js/page-Promise.f850cf87.js"><link rel="prefetch" href="/assets/js/page-PromiseallSettled().5a3427d3.js"><link rel="prefetch" href="/assets/js/page-Promiseany()和AggregateError.527b24ea.js"><link rel="prefetch" href="/assets/js/page-Promiseprototypefinally().b5620387.js"><link rel="prefetch" href="/assets/js/page-Proxy.86453e07.js"><link rel="prefetch" href="/assets/js/page-Python.10f3d5b2.js"><link rel="prefetch" href="/assets/js/page-Python多版本虚拟环境共存.12ffd12f.js"><link rel="prefetch" href="/assets/js/page-React.5598c7a9.js"><link rel="prefetch" href="/assets/js/page-ReactHooks（内置）.1ea6c5f2.js"><link rel="prefetch" href="/assets/js/page-ReactHooks（自定义）.3808a29f.js"><link rel="prefetch" href="/assets/js/page-ReactJSX.f97cdef4.js"><link rel="prefetch" href="/assets/js/page-Redis.fbdc3b1e.js"><link rel="prefetch" href="/assets/js/page-Redis常用命令.961e07e7.js"><link rel="prefetch" href="/assets/js/page-Redis数据类型.8781c4d4.js"><link rel="prefetch" href="/assets/js/page-Redis的ACL安全策略.b5aceafb.js"><link rel="prefetch" href="/assets/js/page-Redis的安装与卸载.a2030c3f.js"><link rel="prefetch" href="/assets/js/page-Redis缓存三大问题.61a0e711.js"><link rel="prefetch" href="/assets/js/page-Reflect.f8ba5010.js"><link rel="prefetch" href="/assets/js/page-RegExp扩展.761d49f1.js"><link rel="prefetch" href="/assets/js/page-Set.52e84b08.js"><link rel="prefetch" href="/assets/js/page-Signal监测model变化.c3accabd.js"><link rel="prefetch" href="/assets/js/page-String扩展.1511866a.js"><link rel="prefetch" href="/assets/js/page-Symbol.c8397e43.js"><link rel="prefetch" href="/assets/js/page-Symbol扩展.bfc35e6b.js"><link rel="prefetch" href="/assets/js/page-TCP三次握手期间异常，会发生什么？.44762202.js"><link rel="prefetch" href="/assets/js/page-TCP协议.c12eb363.js"><link rel="prefetch" href="/assets/js/page-TCP协议重传机制.410a09b5.js"><link rel="prefetch" href="/assets/js/page-TCP和UDP可以使用同一个端口吗？.8959cd28.js"><link rel="prefetch" href="/assets/js/page-TCP四次挥手期间异常，会发生什么？.345156c7.js"><link rel="prefetch" href="/assets/js/page-Term查询语法.80e30055.js"><link rel="prefetch" href="/assets/js/page-TypeScript.02f022b4.js"><link rel="prefetch" href="/assets/js/page-UDP协议.9148f357.js"><link rel="prefetch" href="/assets/js/page-UML类图.187abf88.js"><link rel="prefetch" href="/assets/js/page-V8引擎的工作原理.ff757409.js"><link rel="prefetch" href="/assets/js/page-VMware彻底卸载删除干净.d85d2b71.js"><link rel="prefetch" href="/assets/js/page-Vue3源码中的基础工具函数.c63f7d4f.js"><link rel="prefetch" href="/assets/js/page-Vuejs.405a95bf.js"><link rel="prefetch" href="/assets/js/page-Vue项目规范.420c51c1.js"><link rel="prefetch" href="/assets/js/page-Webpack5.53ccf686.js"><link rel="prefetch" href="/assets/js/page-asyncawait.56af414b.js"><link rel="prefetch" href="/assets/js/page-clone速度过慢.491f6773.js"><link rel="prefetch" href="/assets/js/page-crontab命令.d413f26d.js"><link rel="prefetch" href="/assets/js/page-filter()使用isnull参数时返回重复对象.876f8006.js"><link rel="prefetch" href="/assets/js/page-forawaitof.8de5736a.js"><link rel="prefetch" href="/assets/js/page-gitrebase的两种用法.f4246ad9.js"><link rel="prefetch" href="/assets/js/page-globalThis.f91c5944.js"><link rel="prefetch" href="/assets/js/page-let和const.cd331686.js"><link rel="prefetch" href="/assets/js/page-model元数据Meta.d07f626d.js"><link rel="prefetch" href="/assets/js/page-model外键关系.25c3a160.js"><link rel="prefetch" href="/assets/js/page-model查询检索操作.aa76a36d.js"><link rel="prefetch" href="/assets/js/page-model的继承.a287b1d7.js"><link rel="prefetch" href="/assets/js/page-npm、yarn、pnpm区别.7bb106bb.js"><link rel="prefetch" href="/assets/js/page-pull时发现代码冲突，如何解决.95b16dd3.js"><link rel="prefetch" href="/assets/js/page-super()函数.da84a6bf.js"><link rel="prefetch" href="/assets/js/page-this指向.39f12b77.js"><link rel="prefetch" href="/assets/js/page-中介者模式.0e7f9cde.js"><link rel="prefetch" href="/assets/js/page-事件循环机制，微任务和宏任务的关系.89c43a3c.js"><link rel="prefetch" href="/assets/js/page-产品与人性28个心理学效应.6137215f.js"><link rel="prefetch" href="/assets/js/page-享元模式.f80b4228.js"><link rel="prefetch" href="/assets/js/page-代理模式.984fa97b.js"><link rel="prefetch" href="/assets/js/page-代码风格.3c394d43.js"><link rel="prefetch" href="/assets/js/page-伪元素和伪类.a04b82f1.js"><link rel="prefetch" href="/assets/js/page-作用域.b1cff081.js"><link rel="prefetch" href="/assets/js/page-使用Celery实现任务调度.dfd82678.js"><link rel="prefetch" href="/assets/js/page-使用Fabric执行SSH.223c0160.js"><link rel="prefetch" href="/assets/js/page-使用Paramiko执行SSH.b4a71dad.js"><link rel="prefetch" href="/assets/js/page-使用logging配置日志的方式.b818a251.js"><link rel="prefetch" href="/assets/js/page-使用openpyxl处理新版本Excel.34f735f8.js"><link rel="prefetch" href="/assets/js/page-使用smtplib发送电子邮件.af2cff34.js"><link rel="prefetch" href="/assets/js/page-使用subprocess执行cmd.3b2bbe7e.js"><link rel="prefetch" href="/assets/js/page-使用telnetlib执行Telnet.ab82f16c.js"><link rel="prefetch" href="/assets/js/page-使用xlrd处理旧版本Excel.8ab2489b.js"><link rel="prefetch" href="/assets/js/page-修订FunctionprototypetoString().8ef16562.js"><link rel="prefetch" href="/assets/js/page-全局解释器锁（GIL）.210dd30e.js"><link rel="prefetch" href="/assets/js/page-全文搜索语法.4eedf897.js"><link rel="prefetch" href="/assets/js/page-公共变量、私有变量、保护变量.a689fb6b.js"><link rel="prefetch" href="/assets/js/page-关于本站.dcea0f47.js"><link rel="prefetch" href="/assets/js/page-内置类型和类型断言.d02ed0c8.js"><link rel="prefetch" href="/assets/js/page-函数与class类型.4e8d2397.js"><link rel="prefetch" href="/assets/js/page-函数参数.f9e6af14.js"><link rel="prefetch" href="/assets/js/page-函数类型.9d298a4c.js"><link rel="prefetch" href="/assets/js/page-函数组件设计模式.68e6f4e7.js"><link rel="prefetch" href="/assets/js/page-函数装饰器.14758d62.js"><link rel="prefetch" href="/assets/js/page-分组查询语法.cdcd911f.js"><link rel="prefetch" href="/assets/js/page-分词器的原理和使用.34aac4e1.js"><link rel="prefetch" href="/assets/js/page-分页查询的三种语法.5bd4d54a.js"><link rel="prefetch" href="/assets/js/page-切片.00bcea81.js"><link rel="prefetch" href="/assets/js/page-刚刚的commit有误，想要撤回.dc92e864.js"><link rel="prefetch" href="/assets/js/page-刚刚的push有误，想要撤回.7ca6c646.js"><link rel="prefetch" href="/assets/js/page-前端登录方案总结.26a948d7.js"><link rel="prefetch" href="/assets/js/page-前端路由原理.28b01242.js"><link rel="prefetch" href="/assets/js/page-动态引入.b4e07286.js"><link rel="prefetch" href="/assets/js/page-包管理工具.f0e1e2c6.js"><link rel="prefetch" href="/assets/js/page-协程.8e31aede.js"><link rel="prefetch" href="/assets/js/page-单例模式.f0273c5a.js"><link rel="prefetch" href="/assets/js/page-原型与原型链.1cba1ccf.js"><link rel="prefetch" href="/assets/js/page-原型模式.fc651a94.js"><link rel="prefetch" href="/assets/js/page-反射.5ff46acb.js"><link rel="prefetch" href="/assets/js/page-受控组件和非受控组件.95a43659.js"><link rel="prefetch" href="/assets/js/page-变量与常量.3016dca6.js"><link rel="prefetch" href="/assets/js/page-可选的CatchBinding.f73bf820.js"><link rel="prefetch" href="/assets/js/page-可选链Optionalchaining.3dc6ba4c.js"><link rel="prefetch" href="/assets/js/page-同步与异步.6fc19fc0.js"><link rel="prefetch" href="/assets/js/page-同源策略.83957bce.js"><link rel="prefetch" href="/assets/js/page-命令模式.c9b0df04.js"><link rel="prefetch" href="/assets/js/page-命令行操作.39886322.js"><link rel="prefetch" href="/assets/js/page-响应式原理.5ecc1947.js"><link rel="prefetch" href="/assets/js/page-回流与重绘.ec87dc40.js"><link rel="prefetch" href="/assets/js/page-垃圾回收.e3d0e4ba.js"><link rel="prefetch" href="/assets/js/page-基本配置.ccdaf258.js"><link rel="prefetch" href="/assets/js/page-基础入门.f4cd31c3.js"><link rel="prefetch" href="/assets/js/page-基础用法要点.001e2554.js"><link rel="prefetch" href="/assets/js/page-基础类型（始于JS）.33906a79.js"><link rel="prefetch" href="/assets/js/page-声明函数的六种方式.d3ff77f3.js"><link rel="prefetch" href="/assets/js/page-备忘录模式.6856269c.js"><link rel="prefetch" href="/assets/js/page-复杂度分析.35a3a319.js"><link rel="prefetch" href="/assets/js/page-外观模式.b8769e06.js"><link rel="prefetch" href="/assets/js/page-多线程、多进程.12e7efe7.js"><link rel="prefetch" href="/assets/js/page-大文件分片上传和断点续传.8669f999.js"><link rel="prefetch" href="/assets/js/page-如何使用GitFlow工作流进行团队协作.e43cf339.js"><link rel="prefetch" href="/assets/js/page-如何修改commit信息.29698c50.js"><link rel="prefetch" href="/assets/js/page-如何修改历史commits中的用户名和邮箱.3dc6894d.js"><link rel="prefetch" href="/assets/js/page-如何参与开源项目-提交PR与更新Fork分支.b26b0e59.js"><link rel="prefetch" href="/assets/js/page-如何查看ORM对应的SQL语句.b646075a.js"><link rel="prefetch" href="/assets/js/page-如何迁移仓库并保留commits记录.24079c53.js"><link rel="prefetch" href="/assets/js/page-如何限制用户可使用的命令.1fd9e211.js"><link rel="prefetch" href="/assets/js/page-如果已经建立了连接，但是客户端突然出现故障了怎么办？.a05f99ee.js"><link rel="prefetch" href="/assets/js/page-如果已经建立了连接，但是服务端的进程崩溃会发生什么？.35ca67b3.js"><link rel="prefetch" href="/assets/js/page-子查询语法.18cf1b74.js"><link rel="prefetch" href="/assets/js/page-字面量类型.0a79dc95.js"><link rel="prefetch" href="/assets/js/page-字面量类型与枚举.8a6072bc.js"><link rel="prefetch" href="/assets/js/page-定义字段类型：Mapping.4cf1e343.js"><link rel="prefetch" href="/assets/js/page-定位（position）.016b5190.js"><link rel="prefetch" href="/assets/js/page-实例方法、类方法、静态方法.e7b8984e.js"><link rel="prefetch" href="/assets/js/page-实现Objectcreate方法.380e4b82.js"><link rel="prefetch" href="/assets/js/page-实现apply方法.bfec9db3.js"><link rel="prefetch" href="/assets/js/page-实现bind方法.3beff12c.js"><link rel="prefetch" href="/assets/js/page-实现call方法.284a65eb.js"><link rel="prefetch" href="/assets/js/page-实现instanceof运算符.724b21bf.js"><link rel="prefetch" href="/assets/js/page-实现new运算符.b696cc99.js"><link rel="prefetch" href="/assets/js/page-实现单例模式.5b5859cb.js"><link rel="prefetch" href="/assets/js/page-实现对象数组去重的方法.5235d471.js"><link rel="prefetch" href="/assets/js/page-实现数组去重的方法.d5d5eba7.js"><link rel="prefetch" href="/assets/js/page-实现数组扁平化flat方法.a955ab4d.js"><link rel="prefetch" href="/assets/js/page-实现浅拷贝（shallowClone）.41179cd8.js"><link rel="prefetch" href="/assets/js/page-实现深拷贝（deepClone）.7bec71f0.js"><link rel="prefetch" href="/assets/js/page-实现符合PromisesA+规范的Promise.b0a2e0bf.js"><link rel="prefetch" href="/assets/js/page-实现节流函数（throttle）.3540d06f.js"><link rel="prefetch" href="/assets/js/page-实现防抖函数（debounce）.d9cd78c4.js"><link rel="prefetch" href="/assets/js/page-对象遍历的几种方式.57b37bd8.js"><link rel="prefetch" href="/assets/js/page-导出导入数据库表数据.1772d816.js"><link rel="prefetch" href="/assets/js/page-尾逗号Trailingcommas.2abe2954.js"><link rel="prefetch" href="/assets/js/page-嵌套类型和父子文档.4ebf3800.js"><link rel="prefetch" href="/assets/js/page-工厂模式.17a4b0e9.js"><link rel="prefetch" href="/assets/js/page-已commit未push，想修改代码.db9dfc6f.js"><link rel="prefetch" href="/assets/js/page-已commit未push，漏提交文件.9beacd58.js"><link rel="prefetch" href="/assets/js/page-常用命令.ca660426.js"><link rel="prefetch" href="/assets/js/page-常用命令清单.ec173f3c.js"><link rel="prefetch" href="/assets/js/page-幂运算符.eb948ec0.js"><link rel="prefetch" href="/assets/js/page-库和表的基本操作.aa7d91fc.js"><link rel="prefetch" href="/assets/js/page-建造者模式.43cecf91.js"><link rel="prefetch" href="/assets/js/page-忘记root密码如何重置.636f3c3c.js"><link rel="prefetch" href="/assets/js/page-性能优化-产出代码.47ab0f9b.js"><link rel="prefetch" href="/assets/js/page-性能优化-构建速度.fcd5037c.js"><link rel="prefetch" href="/assets/js/page-执行migrate时报错SQLite版本过低.e810aacd.js"><link rel="prefetch" href="/assets/js/page-执行上下文和调用栈.acb8753f.js"><link rel="prefetch" href="/assets/js/page-抓包与分析.d314a926.js"><link rel="prefetch" href="/assets/js/page-抽象工厂模式.507e35aa.js"><link rel="prefetch" href="/assets/js/page-拔掉网线几秒再插回去，原本的TCP连接还在吗？.593c3042.js"><link rel="prefetch" href="/assets/js/page-接口类型与类型别名.7bb7680b.js"><link rel="prefetch" href="/assets/js/page-接口设计.e4217bcd.js"><link rel="prefetch" href="/assets/js/page-搜索词自动补全语法.ded5a78c.js"><link rel="prefetch" href="/assets/js/page-数字分隔符.97dfee4b.js"><link rel="prefetch" href="/assets/js/page-数据的增删改.ffd32fe7.js"><link rel="prefetch" href="/assets/js/page-数据类型.3d56f5bf.js"><link rel="prefetch" href="/assets/js/page-数据结构与算法.ce3ee863.js"><link rel="prefetch" href="/assets/js/page-数据结构之数组.1b70999e.js"><link rel="prefetch" href="/assets/js/page-数据结构之链表.61ca5733.js"><link rel="prefetch" href="/assets/js/page-数组遍历的几种方式.ee48d59f.js"><link rel="prefetch" href="/assets/js/page-文案指南.72c2872e.js"><link rel="prefetch" href="/assets/js/page-文档基本操作.6908df44.js"><link rel="prefetch" href="/assets/js/page-文档规范.46e09f4d.js"><link rel="prefetch" href="/assets/js/page-新的逻辑操作符.18f00213.js"><link rel="prefetch" href="/assets/js/page-更新日志.7492152a.js"><link rel="prefetch" href="/assets/js/page-最佳实践-通用模板.0668e5d5.js"><link rel="prefetch" href="/assets/js/page-未完待续.d8875901.js"><link rel="prefetch" href="/assets/js/page-条件查询语法.6259a09d.js"><link rel="prefetch" href="/assets/js/page-枚举.1b619eb2.js"><link rel="prefetch" href="/assets/js/page-栈空间和堆空间.f51d7427.js"><link rel="prefetch" href="/assets/js/page-核心概念.2e97ddf0.js"><link rel="prefetch" href="/assets/js/page-桥接模式.4c31be9b.js"><link rel="prefetch" href="/assets/js/page-模板方法模式.ad7d0d94.js"><link rel="prefetch" href="/assets/js/page-模板编译.826edb66.js"><link rel="prefetch" href="/assets/js/page-正向代理与反向代理.a7e97e75.js"><link rel="prefetch" href="/assets/js/page-正排索引与倒排索引.a099bebe.js"><link rel="prefetch" href="/assets/js/page-泛型.f5cc1131.js"><link rel="prefetch" href="/assets/js/page-浅克隆与深克隆.5eef968c.js"><link rel="prefetch" href="/assets/js/page-浏览器内核与JavaScript引擎.eca9dc0a.js"><link rel="prefetch" href="/assets/js/page-浏览器宏观认识.c2cb07a9.js"><link rel="prefetch" href="/assets/js/page-浏览器相关.e0cd93c0.js"><link rel="prefetch" href="/assets/js/page-浏览器缓存机制.feda936c.js"><link rel="prefetch" href="/assets/js/page-浮动（float）.901e90fc.js"><link rel="prefetch" href="/assets/js/page-渲染引擎的工作原理.014358a0.js"><link rel="prefetch" href="/assets/js/page-源码阅读与学习.481f2749.js"><link rel="prefetch" href="/assets/js/page-版本号定义规范.ea77cbc2.js"><link rel="prefetch" href="/assets/js/page-版本控制.b81720f3.js"><link rel="prefetch" href="/assets/js/page-状态模式.7922f446.js"><link rel="prefetch" href="/assets/js/page-生成器generator.9668fcd1.js"><link rel="prefetch" href="/assets/js/page-盒模型.1629a985.js"><link rel="prefetch" href="/assets/js/page-空值合并运算符.ec267ebf.js"><link rel="prefetch" href="/assets/js/page-策略模式.f11b2de0.js"><link rel="prefetch" href="/assets/js/page-简单查询语法.755e7890.js"><link rel="prefetch" href="/assets/js/page-类变量和实例变量.26e36ed0.js"><link rel="prefetch" href="/assets/js/page-类和实例.116a0d08.js"><link rel="prefetch" href="/assets/js/page-类型创建.e9fc0595.js"><link rel="prefetch" href="/assets/js/page-类型守卫.c0ca3bd4.js"><link rel="prefetch" href="/assets/js/page-类型安全保护.b2f1efcb.js"><link rel="prefetch" href="/assets/js/page-类型提示TypeHints.c671dfbe.js"><link rel="prefetch" href="/assets/js/page-类型提示进阶：typing模块.8ad67e61.js"><link rel="prefetch" href="/assets/js/page-类的继承.613e893f.js"><link rel="prefetch" href="/assets/js/page-类私有域.429cff29.js"><link rel="prefetch" href="/assets/js/page-类类型.ddb522e9.js"><link rel="prefetch" href="/assets/js/page-索引模板：IndexTemplate.9c1f442b.js"><link rel="prefetch" href="/assets/js/page-索引管理API.3ba5998d.js"><link rel="prefetch" href="/assets/js/page-组件渲染与更新.d718b577.js"><link rel="prefetch" href="/assets/js/page-组合查询语法.be46bd37.js"><link rel="prefetch" href="/assets/js/page-组合模式.f46de5e8.js"><link rel="prefetch" href="/assets/js/page-经典布局.97171f57.js"><link rel="prefetch" href="/assets/js/page-统计语法：聚合查询.ecad9122.js"><link rel="prefetch" href="/assets/js/page-继承的八种方式.d56d0eca.js"><link rel="prefetch" href="/assets/js/page-编译器与解释器.bb7b4315.js"><link rel="prefetch" href="/assets/js/page-网络分层模型.5979c40c.js"><link rel="prefetch" href="/assets/js/page-网络安全协议（HTTPS）.2fec39b8.js"><link rel="prefetch" href="/assets/js/page-网络排查工具.b4ab6dfe.js"><link rel="prefetch" href="/assets/js/page-职责链模式.ac62727a.js"><link rel="prefetch" href="/assets/js/page-联合类型与交叉类型.b2b79630.js"><link rel="prefetch" href="/assets/js/page-虚拟DOM与diff算法.f0e1cd03.js"><link rel="prefetch" href="/assets/js/page-表中列的基本属性.52b41a5a.js"><link rel="prefetch" href="/assets/js/page-表达式和函数.f75d9bd4.js"><link rel="prefetch" href="/assets/js/page-装饰器模式.8dca5bb2.js"><link rel="prefetch" href="/assets/js/page-观察者模式.d5a61692.js"><link rel="prefetch" href="/assets/js/page-解决vim中文乱码问题.6fcda6f5.js"><link rel="prefetch" href="/assets/js/page-解决方案.101f477a.js"><link rel="prefetch" href="/assets/js/page-解构赋值.86ffe883.js"><link rel="prefetch" href="/assets/js/page-计算机网络.f847f2e3.js"><link rel="prefetch" href="/assets/js/page-认知偏差知识手册.fabcaacf.js"><link rel="prefetch" href="/assets/js/page-设计原则.5d46bed4.js"><link rel="prefetch" href="/assets/js/page-设计模式.59428e28.js"><link rel="prefetch" href="/assets/js/page-设计模式简介.fecfd619.js"><link rel="prefetch" href="/assets/js/page-访问者模式和解释器模式.60584ff5.js"><link rel="prefetch" href="/assets/js/page-语义类标签.e7051f95.js"><link rel="prefetch" href="/assets/js/page-语法规范.3264b14c.js"><link rel="prefetch" href="/assets/js/page-课外学习.d3043566.js"><link rel="prefetch" href="/assets/js/page-调用函数的四种方式.fe3e09e2.js"><link rel="prefetch" href="/assets/js/page-负载均衡.392b16bb.js"><link rel="prefetch" href="/assets/js/page-跨站脚本攻击（XSS）.8c39bf66.js"><link rel="prefetch" href="/assets/js/page-输入URL到页面展示，中间发生了什么？.ecc39529.js"><link rel="prefetch" href="/assets/js/page-连接查询语法.4403ad64.js"><link rel="prefetch" href="/assets/js/page-迭代器Iterator.d412c315.js"><link rel="prefetch" href="/assets/js/page-迭代器模式.96cd83b5.js"><link rel="prefetch" href="/assets/js/page-适配器模式.447636d4.js"><link rel="prefetch" href="/assets/js/page-选择器与样式优先级.edc5e5bf.js"><link rel="prefetch" href="/assets/js/page-部署纯净的Ubuntu系统.09f2ab39.js"><link rel="prefetch" href="/assets/js/page-配置密钥实现免密操作.ca2053c4.js"><link rel="prefetch" href="/assets/js/page-错误和异常.00920e90.js"><link rel="prefetch" href="/assets/js/page-长度和单位.d9b82a2a.js"><link rel="prefetch" href="/assets/js/page-闭包.98c72096.js"><link rel="prefetch" href="/assets/js/page-问题排查.32cf97a0.js"><link rel="prefetch" href="/assets/js/page-集群管理API.fd34f689.js"><link rel="prefetch" href="/assets/js/page-面向对象编程.9b15ce27.js"><link rel="prefetch" href="/assets/js/page-高性能渲染大量数据（虚拟列表）.af84d666.js"><link rel="prefetch" href="/assets/js/page-高级用法特性.5ca155d5.js"><link rel="prefetch" href="/assets/js/page-高级配置.22915481.js"><link rel="prefetch" href="/assets/js/page-高阶函数.f8a327d9.js"><link rel="prefetch" href="/assets/js/page-魔术方法（双下划线方法）.f542278d.js"><link rel="prefetch" href="/assets/js/vendors~layout-Slide.a9288077.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.458593ce.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container has-navbar has-sidebar has-anchor"><header class="navbar"><!----> <div class="content__navbar-start"></div> <button title="Sidebar Button" class="sidebar-button"><span class="icon"></span></button> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="CODING 修炼小册" class="logo"> <!----> <span class="site-name can-hide">CODING 修炼小册</span></a> <!----> <div class="content__navbar-center"></div> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术规范" class="dropdown-title"><span class="title"><!---->
+        技术规范
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><a href="/style-guide/version-control/" class="nav-link"><!---->
+  版本控制
+</a></li><li class="dropdown-item"><a href="/style-guide/program/" class="nav-link"><!---->
+  代码风格
+</a></li><li class="dropdown-item"><a href="/style-guide/document/" class="nav-link"><!---->
+  文档规范
+</a></li><li class="dropdown-item"><a href="/style-guide/apis/" class="nav-link"><!---->
+  接口设计
+</a></li><li class="dropdown-item"><a href="/style-guide/product/" class="nav-link"><!---->
+  文案指南
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="必知必会" class="dropdown-title"><span class="title"><!---->
+        必知必会
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>常用工具</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/basic-skills/git/" class="nav-link"><!---->
+  Git
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/nginx/" class="nav-link"><!---->
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/linux/common-commands/" class="nav-link"><!---->
+  Linux
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/docker/docker-tutorial/" class="nav-link"><!---->
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/vmware/uninstallation-of-vmware/" class="nav-link"><!---->
+  VMware
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>网络知识</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/basic-skills/network/" class="nav-link"><!---->
+  计算机网络
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端知识" class="dropdown-title"><span class="title"><!---->
+        前端知识
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>基础</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/html/" class="nav-link"><!---->
+  HTML
+</a></li><li class="dropdown-subitem"><a href="/frontend/css/" class="nav-link"><!---->
+  CSS
+</a></li><li class="dropdown-subitem"><a href="/frontend/javascript/" class="nav-link"><!---->
+  JavaScript
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>进阶</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/es6-and-beyond/" class="nav-link"><!---->
+  ECMAScript 6+
+</a></li><li class="dropdown-subitem"><a href="/frontend/typescript/" class="nav-link"><!---->
+  TypeScript
+</a></li><li class="dropdown-subitem"><a href="/frontend/browser/" class="nav-link"><!---->
+  浏览器相关
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>手写</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/javascript-handwritten/" class="nav-link"><!---->
+  JS 手写
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>框架</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/vuejs/" class="nav-link"><!---->
+  Vue.js
+</a></li><li class="dropdown-subitem"><a href="/frontend/react/" class="nav-link"><!---->
+  React
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>工具</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/webpack/" class="nav-link"><!---->
+  Webpack
+</a></li><li class="dropdown-subitem"><a href="/frontend/package/" class="nav-link"><!---->
+  包管理工具
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端知识" class="dropdown-title"><span class="title"><!---->
+        后端知识
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Python 技术栈</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/backend/python/" class="nav-link"><!---->
+  Python
+</a></li><li class="dropdown-subitem"><a href="/backend/django/" class="nav-link"><!---->
+  Django
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>数据库/中间件</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/backend/mysql/" class="nav-link router-link-active active"><!---->
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/backend/redis/" class="nav-link"><!---->
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/backend/elasticsearch/" class="nav-link"><!---->
+  Elasticsearch
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="深入学习" class="dropdown-title"><span class="title"><!---->
+        深入学习
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><a href="/in-depth-learning/algorithm/" class="nav-link"><!---->
+  数据结构与算法
+</a></li><li class="dropdown-item"><a href="/in-depth-learning/design-patterns/" class="nav-link"><!---->
+  设计模式
+</a></li><li class="dropdown-item"><a href="/in-depth-learning/source-code/" class="nav-link"><!---->
+  源码阅读与学习
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目相关" class="dropdown-title"><span class="title"><!---->
+        项目相关
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><a href="/project/solutions/" class="nav-link"><!---->
+  解决方案
+</a></li><li class="dropdown-item"><a href="/project/troubleshooting/" class="nav-link"><!---->
+  问题排查
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title"><!---->
+        其它
+      </span> <span class="arrow"></span></button> <ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>站内</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/others/about.html" class="nav-link"><!---->
+  关于本站
+</a></li><li class="dropdown-subitem"><a href="/extracurricular/" class="nav-link"><!---->
+  课外学习
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>站外</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/wenyuan" target="_blank" rel="noopener noreferrer" class="nav-link external"><!---->
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div></nav> <!----> <!----> <!----> <div class="content__navbar-end"></div></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!----> <!----> <div class="content__sidebar-top"></div> <nav class="sidebar-nav-links"><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="技术规范" class="dropdown-title"><span class="title"><!---->
+      技术规范
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/style-guide/version-control/" class="nav-link"><!---->
+  版本控制
+</a></li><li class="dropdown-item"><!----> <a href="/style-guide/program/" class="nav-link"><!---->
+  代码风格
+</a></li><li class="dropdown-item"><!----> <a href="/style-guide/document/" class="nav-link"><!---->
+  文档规范
+</a></li><li class="dropdown-item"><!----> <a href="/style-guide/apis/" class="nav-link"><!---->
+  接口设计
+</a></li><li class="dropdown-item"><!----> <a href="/style-guide/product/" class="nav-link"><!---->
+  文案指南
+</a></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="必知必会" class="dropdown-title"><span class="title"><!---->
+      必知必会
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>常用工具</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/basic-skills/git/" class="nav-link"><!---->
+  Git
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/nginx/" class="nav-link"><!---->
+  Nginx
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/linux/common-commands/" class="nav-link"><!---->
+  Linux
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/docker/docker-tutorial/" class="nav-link"><!---->
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/basic-skills/vmware/uninstallation-of-vmware/" class="nav-link"><!---->
+  VMware
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>网络知识</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/basic-skills/network/" class="nav-link"><!---->
+  计算机网络
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="前端知识" class="dropdown-title"><span class="title"><!---->
+      前端知识
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>基础</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/html/" class="nav-link"><!---->
+  HTML
+</a></li><li class="dropdown-subitem"><a href="/frontend/css/" class="nav-link"><!---->
+  CSS
+</a></li><li class="dropdown-subitem"><a href="/frontend/javascript/" class="nav-link"><!---->
+  JavaScript
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>进阶</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/es6-and-beyond/" class="nav-link"><!---->
+  ECMAScript 6+
+</a></li><li class="dropdown-subitem"><a href="/frontend/typescript/" class="nav-link"><!---->
+  TypeScript
+</a></li><li class="dropdown-subitem"><a href="/frontend/browser/" class="nav-link"><!---->
+  浏览器相关
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>手写</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/javascript-handwritten/" class="nav-link"><!---->
+  JS 手写
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>框架</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/vuejs/" class="nav-link"><!---->
+  Vue.js
+</a></li><li class="dropdown-subitem"><a href="/frontend/react/" class="nav-link"><!---->
+  React
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>工具</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/frontend/webpack/" class="nav-link"><!---->
+  Webpack
+</a></li><li class="dropdown-subitem"><a href="/frontend/package/" class="nav-link"><!---->
+  包管理工具
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="后端知识" class="dropdown-title"><span class="title"><!---->
+      后端知识
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>Python 技术栈</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/backend/python/" class="nav-link"><!---->
+  Python
+</a></li><li class="dropdown-subitem"><a href="/backend/django/" class="nav-link"><!---->
+  Django
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>数据库/中间件</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/backend/mysql/" class="nav-link router-link-active active"><!---->
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/backend/redis/" class="nav-link"><!---->
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/backend/elasticsearch/" class="nav-link"><!---->
+  Elasticsearch
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="深入学习" class="dropdown-title"><span class="title"><!---->
+      深入学习
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/in-depth-learning/algorithm/" class="nav-link"><!---->
+  数据结构与算法
+</a></li><li class="dropdown-item"><!----> <a href="/in-depth-learning/design-patterns/" class="nav-link"><!---->
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/in-depth-learning/source-code/" class="nav-link"><!---->
+  源码阅读与学习
+</a></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="项目相关" class="dropdown-title"><span class="title"><!---->
+      项目相关
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/project/solutions/" class="nav-link"><!---->
+  解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/project/troubleshooting/" class="nav-link"><!---->
+  问题排查
+</a></li></ul></div></div><div class="nav-item"><div class="mobile-dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title"><!---->
+      其它
+    </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>站内</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/others/about.html" class="nav-link"><!---->
+  关于本站
+</a></li><li class="dropdown-subitem"><a href="/extracurricular/" class="nav-link"><!---->
+  课外学习
+</a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>站外</span></h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/wenyuan" target="_blank" rel="noopener noreferrer" class="nav-link external"><!---->
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav> <!----> <div class="content__sidebar-center"></div> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading clickable"><!----> <span class="title">MySQL 基础知识</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading clickable"><!----> <span class="title">MySQL 常见问题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading clickable open"><!----> <span class="title">MySQL 日常运维</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/backend/mysql/installation-of-mysql/" aria-current="page" class="active sidebar-link">MySQL 的安装与卸载</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#windows-下安装" class="sidebar-link">Windows 下安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#安装-mysql" class="sidebar-link heading3">安装 MySQL</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#解压压缩包" class="sidebar-link heading3">解压压缩包</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#进入命令行终端" class="sidebar-link heading3">进入命令行终端</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#初始化-mysql" class="sidebar-link heading3">初始化 MySQL</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#安装-mysqld" class="sidebar-link heading3">安装 mysqld</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#启动-mysql-服务" class="sidebar-link heading3">启动 MySQL 服务</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#添加-修改-root-账号登录密码" class="sidebar-link heading3">添加/修改 root 账号登录密码</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql" class="sidebar-link heading3">卸载 MySQL</a></li></ul></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#ubuntu-20-04-下安装" class="sidebar-link">Ubuntu 20.04 下安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#安装-mysql-2" class="sidebar-link heading3">安装 MySQL</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#新建用户并分配权限" class="sidebar-link heading3">新建用户并分配权限</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql-2" class="sidebar-link heading3">卸载 MySQL</a></li></ul></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#centos-7-6-下安装" class="sidebar-link">CentOS 7.6 下安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#安装对比" class="sidebar-link heading3">安装对比</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#下载并解压安装包" class="sidebar-link heading3">下载并解压安装包</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#创建数据文件夹以及用户并赋予权限" class="sidebar-link heading3">创建数据文件夹以及用户并赋予权限</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#初始化数据库" class="sidebar-link heading3">初始化数据库</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#创建-mysql-配置文件-my-cnf" class="sidebar-link heading3">创建 MySQL 配置文件 my.cnf</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#配置全局环境变量" class="sidebar-link heading3">配置全局环境变量</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#启动-mysql-服务并修改密码" class="sidebar-link heading3">启动 MySQL 服务并修改密码</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#开机自启配置" class="sidebar-link heading3">开机自启配置</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#开放远程连接" class="sidebar-link heading3">开放远程连接</a></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql-3" class="sidebar-link heading3">卸载 MySQL</a></li></ul></li><li class="sidebar-sub-header"><a href="/backend/mysql/installation-of-mysql/#参考资料" class="sidebar-link">参考资料</a></li></ul></li><li><a href="/backend/mysql/primary-key-and-increment-id/" class="sidebar-link">MySQL 主键和自增 ID</a></li><li><a href="/backend/mysql/db-design-spec/" class="sidebar-link">MySQL 数据库设计规范</a></li></ul></section></li></ul> <!----> <div class="content__sidebar-bottom"></div> <!----></aside> <main class="page"><nav class="breadcrumb disable"><!----></nav> <!----> <div class="content__page-top"></div> <div vocab="https://schema.org/" typeof="Article" class="page-title"><h1><!----> <span property="headline">MySQL 的安装与卸载</span></h1> <!----> <!----> <hr></div> <div class="anchor-place-holder"><aside id="anchor"><div class="anchor-wrapper"><ul class="anchor-list"><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#windows-下安装" class="anchor-link heading2"><div>Windows 下安装</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#安装-mysql" class="anchor-link heading3"><div>安装 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#解压压缩包" class="anchor-link heading3"><div>解压压缩包</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#进入命令行终端" class="anchor-link heading3"><div>进入命令行终端</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#初始化-mysql" class="anchor-link heading3"><div>初始化 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#安装-mysqld" class="anchor-link heading3"><div>安装 mysqld</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#启动-mysql-服务" class="anchor-link heading3"><div>启动 MySQL 服务</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#添加-修改-root-账号登录密码" class="anchor-link heading3"><div>添加/修改 root 账号登录密码</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql" class="anchor-link heading3"><div>卸载 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#ubuntu-20-04-下安装" class="anchor-link heading2"><div>Ubuntu 20.04 下安装</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#安装-mysql-2" class="anchor-link heading3"><div>安装 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#新建用户并分配权限" class="anchor-link heading3"><div>新建用户并分配权限</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql-2" class="anchor-link heading3"><div>卸载 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#centos-7-6-下安装" class="anchor-link heading2"><div>CentOS 7.6 下安装</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#安装对比" class="anchor-link heading3"><div>安装对比</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#下载并解压安装包" class="anchor-link heading3"><div>下载并解压安装包</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#创建数据文件夹以及用户并赋予权限" class="anchor-link heading3"><div>创建数据文件夹以及用户并赋予权限</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#初始化数据库" class="anchor-link heading3"><div>初始化数据库</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#创建-mysql-配置文件-my-cnf" class="anchor-link heading3"><div>创建 MySQL 配置文件 my.cnf</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#配置全局环境变量" class="anchor-link heading3"><div>配置全局环境变量</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#启动-mysql-服务并修改密码" class="anchor-link heading3"><div>启动 MySQL 服务并修改密码</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#开机自启配置" class="anchor-link heading3"><div>开机自启配置</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#开放远程连接" class="anchor-link heading3"><div>开放远程连接</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#卸载-mysql-3" class="anchor-link heading3"><div>卸载 MySQL</div></a></li><li class="anchor"><a href="/backend/mysql/installation-of-mysql/#参考资料" class="anchor-link heading2"><div>参考资料</div></a></li></ul></div></aside></div> <!----> <div class="content__content-top"></div> <div class="theme-default-content content__default"><h1 id="mysql-的安装与卸载"><a href="#mysql-的安装与卸载" class="header-anchor">#</a> MySQL 的安装与卸载</h1> <blockquote><p>以安装 MySQL 8.x.x 为例。</p></blockquote> <h2 id="windows-下安装"><a href="#windows-下安装" class="header-anchor">#</a> Windows 下安装</h2> <blockquote><p>Windows 下的 MySQL 不能用于生产，一般用于开发目的或者尝鲜体验。</p></blockquote> <h3 id="安装-mysql"><a href="#安装-mysql" class="header-anchor">#</a> 安装 MySQL</h3> <p>我比较喜欢免安装版本的，轻便干净，删起来方便。</p> <p>到官网的开发者专区下载 MySQL（Community版）免安装软件包：</p> <ul><li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">下载地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>安装包名字：mysql-8.0.28-winx64.zip</li></ul> <blockquote><p>当前最新版本是 8.0，如果需要下载其它版本，可以点击页面中的 <strong>Looking for previous GA versions?</strong>（网站可能会更新，未来入口也许会变化）</p></blockquote> <h3 id="解压压缩包"><a href="#解压压缩包" class="header-anchor">#</a> 解压压缩包</h3> <p>将下载的软件包解压并重命名到 <code>D:\mysql-8.0</code> 目录下。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>├── mysql-8.0
+    │── bin
+    │── docs
+    │── include
+    │── lib
+    │── share
+    │── LICENSE
+    └── README
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="进入命令行终端"><a href="#进入命令行终端" class="header-anchor">#</a> 进入命令行终端</h3> <p>以 Window10 为例，有两种方法能以管理员身份运行 CMD 命令提示符：</p> <ul><li>在<strong>开始菜单</strong>上，单击<strong>鼠标右键</strong>，在出现的菜单中，选择 <strong>命令提示符（管理员）</strong> 点击打开这样即可。</li> <li>点击开始菜单，在 <strong>Windows 系统</strong>中找到<strong>命令提示符</strong>，然后这时候在命令提示符上单击鼠标右键，选择<strong>以管理员身份打开命令提示符</strong>。</li></ul> <p>进入终端后，在终端中依次输入如下指令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>d:
+<span class="token builtin class-name">cd</span> D:<span class="token punctuation">\</span>mysql-8.0<span class="token punctuation">\</span>bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="初始化-mysql"><a href="#初始化-mysql" class="header-anchor">#</a> 初始化 MySQL</h3> <p>初始化可以选择带有随机密码或无密码，建议采用无密码初始化（可以设置密码），以免随机密码丢失。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 随机密码</span>
+.<span class="token punctuation">\</span>mysqld --initialize
+
+<span class="token comment"># 无密码</span>
+.<span class="token punctuation">\</span>mysqld --initialize-insecure
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>执行完初始化命令后，可以发现解压路径下多了一个 <code>data</code> 的文件夹，在里面找到 <code>计算机名.err</code> 的文件，并打开。如果你设置了随机密码，在里面就能找到初始密码：<code>root@localhost: (这个位置的字符串就是临时密码)</code>。</p> <h3 id="安装-mysqld"><a href="#安装-mysqld" class="header-anchor">#</a> 安装 mysqld</h3> <p>继续在当前路径下执行下列命令，安装 Windows 服务：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>.<span class="token punctuation">\</span>mysqld -install
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>PS：<code>mysql</code> 用于执行 SQL 命令，<code>mysqld</code> 用于执行数据库命令：</p> <h3 id="启动-mysql-服务"><a href="#启动-mysql-服务" class="header-anchor">#</a> 启动 MySQL 服务</h3> <p>安装提示 success 后，可以准备启动数据库并连接了。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 启动数据库</span>
+net start mysql
+
+<span class="token comment"># 使用 root 连接数据库，没有密码的话直接回车即可</span>
+.<span class="token punctuation">\</span>mysql -u root -p
+
+<span class="token comment"># 关闭数据库</span>
+net stop mysql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="添加-修改-root-账号登录密码"><a href="#添加-修改-root-账号登录密码" class="header-anchor">#</a> 添加/修改 root 账号登录密码</h3> <p>启动数据库并登录 MySQL：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>net start mysql
+.<span class="token punctuation">\</span>mysql -u root -p
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>查询用户密码，可以看到，root 用户的密码是空的：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token keyword">select</span> host,user,authentication_string from mysql.user<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>修改 root 用户的密码，执行命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>ALTER <span class="token environment constant">USER</span> <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED WITH mysql_native_password BY <span class="token string">'123456'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这里的密码就随意填写，生产环境不建议使用过于简单的 <code>123456</code>、<code>root</code>、<code>admin</code> 之类的密码。该命令执行完毕会得到结果：<code>Query OK, 0 rows affected (0.01 sec)</code>。</p> <p>接着需要继续执行命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>flush privileges<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>该命令作用是刷新 MySQL 的系统权限相关表，这样才能使刚刚的密码修改成功。</p> <p>每次 MySQL 新设置用户或更改密码后都需要用 <code>flush privileges;</code> 来刷新 MySQL 的系统权限相关表，否则会出现拒绝访问。还有一种方法，就是重新启动 MySQL 服务，来使新设置生效。</p> <p>退出登录，并重新登录，此时必须使用刚才添加的密码才能登录 MySQL：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 退出登录</span>
+quit
+
+<span class="token comment"># 重新登录</span>
+.<span class="token punctuation">\</span>mysql -u root -p
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="卸载-mysql"><a href="#卸载-mysql" class="header-anchor">#</a> 卸载 MySQL</h3> <p>同样是以管理员身份运行命名提示符，先停止服务，然后执行卸载命令卸载：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>net stop mysql
+<span class="token comment"># 进入 MySQL 安装目录下的 bin/ 目录</span>
+.<span class="token punctuation">\</span>mysqld --remove mysql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="ubuntu-20-04-下安装"><a href="#ubuntu-20-04-下安装" class="header-anchor">#</a> Ubuntu 20.04 下安装</h2> <h3 id="安装-mysql-2"><a href="#安装-mysql-2" class="header-anchor">#</a> 安装 MySQL</h3> <p>对于 Ubuntu 20.04 及以上版本，直接通过 <code>apt install mysql-server</code> 安装时就会安装 MySQL 8.0.x 版本。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 以下命令均使用 root 用户</span>
+
+<span class="token comment"># 更新系统安装源</span>
+<span class="token function">apt-get</span> update
+<span class="token comment"># MySQL 安装过程中可能需要用到系统对话框来配置一些信息，否则会跳过这些配置，后续会很麻烦</span>
+<span class="token function">apt</span> <span class="token function">install</span> dialog
+<span class="token comment"># 安装 MySQL</span>
+<span class="token function">apt</span> <span class="token function">install</span> mysql-server
+<span class="token comment"># 检查 MySQL 安装是否成功</span>
+mysql -V
+<span class="token comment"># 查看 MySQL 启动状态，没启动就启动一下</span>
+<span class="token function">service</span> mysql status
+
+<span class="token comment"># 初始化 MySQL 的相关配置</span>
+<span class="token comment"># 执行命令之后会出现需要设置的选项</span>
+<span class="token comment"># 对于是否开启密码验证组件，安全起见建议都 y，具体看个人需求</span>
+mysql_secure_installation
+
+<span class="token comment"># 查看 MySQL 启动状态</span>
+<span class="token function">service</span> mysql status
+<span class="token comment"># 测试登录 MySQL</span>
+mysql -uroot -p
+
+<span class="token comment"># 修改 MySQL 的 home 目录，安装时默认创建的服务账户无 home 目录，会在后续抛出警告：</span>
+<span class="token comment"># su: warning: cannot change directory to /nonexistent: No such file or director</span>
+<span class="token function">service</span> mysql stop
+<span class="token function">usermod</span> -d /var/lib/mysql/ mysql
+<span class="token function">service</span> mysql start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>MySQL 的配置文件在 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>，如有需要可以去修改，记得修改后重启 MySQL 服务即可。</p> <h3 id="新建用户并分配权限"><a href="#新建用户并分配权限" class="header-anchor">#</a> 新建用户并分配权限</h3> <p>如果在 MySQL 中创建用户时想要使用简单密码，则修改 MySQL 配置文件：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">vim</span> /etc/mysql/mysql.conf.d/mysqld.cnf`
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在文件末添加如下内容：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
+<span class="token comment">#</span>
+<span class="token comment"># * Validate Settings</span>
+<span class="token comment">#</span>
+validate_password.policy<span class="token operator">=</span>LOW
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><blockquote><p>LOW    Length &gt;= 8<br>
+MEDIUM Length &gt;= 8, numeric, mixed case, and special characters<br>
+STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary</p></blockquote> <p>保存并关闭文件，重启 MySQL 服务使更改生效。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 重启服务</span>
+<span class="token function">service</span> mysql restart
+<span class="token comment"># 登录 MySQL</span>
+mysql -uroot -p
+<span class="token comment"># 查看当前的密码策略要求，确认 validate_password.policy 的值</span>
+SHOW VARIABLES LIKE <span class="token string">'validate_password%'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>在 MySQL 中新建用户的步骤如下：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 以下命令均使用 root 用户</span>
+
+<span class="token comment"># 登录 MySQL</span>
+mysql -uroot -p
+<span class="token comment"># 新建用户（&quot;主机名&quot; 指允许访问 MySQL 的主机，如果想允许来自任何主机的访问，可以使用 &quot;%&quot;）</span>
+CREATE <span class="token environment constant">USER</span> <span class="token string">'[用户名]'</span>@<span class="token string">'[主机名]'</span> IDENTIFIED BY <span class="token string">'[密码]'</span><span class="token punctuation">;</span>
+<span class="token comment"># 对安全不严格的话就通过下面命令创建 developer 用户：</span>
+CREATE <span class="token environment constant">USER</span> <span class="token string">'developer'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'password'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 将所有权限授予新用户的命令</span>
+GRANT ALL PRIVILEGES ON <span class="token punctuation">[</span>数据库名<span class="token punctuation">]</span>.<span class="token punctuation">[</span>表名<span class="token punctuation">]</span> TO <span class="token string">'[用户名]'</span>@<span class="token string">'[连接地址]'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+<span class="token comment"># 或者指定增删改查权限</span>
+GRANT SELECT, UPDATE, DELETE, INSERT ON <span class="token punctuation">[</span>数据库名<span class="token punctuation">]</span>.<span class="token punctuation">[</span>表名<span class="token punctuation">]</span> TO <span class="token string">'[用户名]'</span>@<span class="token string">'[连接地址]'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+<span class="token comment"># 对安全不严格的话就通过下面命令把所有数据库的所有表的所有权限给 developer 用户：</span>
+GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'developer'</span>@<span class="token string">'%'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+
+<span class="token comment"># 如果要使用 root 用户撤销权限</span>
+REVOKE ALL PRIVILEGES FROM <span class="token punctuation">[</span>用户名<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 刷新权限，每一次权限更改后都刷新一下</span>
+FLUSH PRIVILEGES<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="卸载-mysql-2"><a href="#卸载-mysql-2" class="header-anchor">#</a> 卸载 MySQL</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 以下命令均使用 root 用户</span>
+
+<span class="token comment"># 停止所有 MySQL 服务</span>
+<span class="token function">service</span> mysql stop
+<span class="token comment"># 检查所有已安装的 MySQL 软件包，并确认是否有多于一个软件包</span>
+dpkg --list <span class="token operator">|</span> <span class="token function">grep</span> mysql
+<span class="token comment"># 通过软件包名称来删除软件包（把上面列出来的几个全删了）</span>
+<span class="token function">apt-get</span> remove --purge mysql-client-8.0 mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
+<span class="token comment"># 删除 MySQL 配置文件和数据</span>
+<span class="token function">rm</span> -rf /etc/mysql /var/lib/mysql
+<span class="token comment"># 删除不再需要的依赖项</span>
+<span class="token function">apt-get</span> autoremove
+<span class="token comment"># 清理下载的软件包缓存</span>
+<span class="token function">apt-get</span> autoclean
+<span class="token comment"># 删除安装 MySQL 时自动创建的 mysql 这个服务账户</span>
+<span class="token function">userdel</span> -r mysql
+<span class="token comment"># 显示出所有的含有 mysql 文件名的路径，逐一手动删除掉</span>
+<span class="token function">find</span>  / -name mysql -print
+<span class="token comment"># 验证卸载结果</span>
+mysql --version
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="centos-7-6-下安装"><a href="#centos-7-6-下安装" class="header-anchor">#</a> CentOS 7.6 下安装</h2> <h3 id="安装对比"><a href="#安装对比" class="header-anchor">#</a> 安装对比</h3> <p>MySQL 有两种安装方式：</p> <ul><li>yum 安装：安装过程人为无法干预，不能按需安装。rpm 包里面有什么就安装什么，安装的版本也比较低。</li> <li>源码包安装：分为编译安装和免编译安装：可以设定参数，按照需求进行安装，并且安装的版本，可以自己选择，灵活性比较大。</li></ul> <p>这里我们采用源码包 - 免编译的方式安装 MySQL。</p> <h3 id="下载并解压安装包"><a href="#下载并解压安装包" class="header-anchor">#</a> 下载并解压安装包</h3> <p>MySQL 源码包下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">https://dev.mysql.com/downloads/mysql/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>CentOS 是基于红帽的，因此操作系统选择 Red Hat，OS 版本选择 Linux 7 (x86, 64-bit)。</p> <p>选择 <strong>Compressed TAR Archive</strong> 点击 Download，获取到下载链接如下：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.28-el7-x86_64.tar.gz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>登录服务器，切换到 <code>/opt</code> 目录并新建一个 <code>mysql</code> 文件夹，下载 MySQL 安装包（如果下载慢的话，可以在本地下载后传到服务器）：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 切换目录</span>
+<span class="token builtin class-name">cd</span> /opt
+<span class="token comment"># 新建一个文件夹用于放 mysql</span>
+<span class="token function">mkdir</span> mysql
+<span class="token comment"># 切换目录</span>
+<span class="token builtin class-name">cd</span> mysql/
+<span class="token comment"># 下载安装包</span>
+<span class="token function">wget</span> https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.28-el7-x86_64.tar.gz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>解压并重命名：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 解压</span>
+<span class="token function">tar</span> -zxvf mysql-8.0.28-el7-x86_64.tar.gz
+<span class="token comment"># 重命名，原来的名字太长了</span>
+<span class="token function">mv</span> ./mysql-8.0.28-el7-x86_64 mysql-8.0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="创建数据文件夹以及用户并赋予权限"><a href="#创建数据文件夹以及用户并赋予权限" class="header-anchor">#</a> 创建数据文件夹以及用户并赋予权限</h3> <p>以下步骤需要在 <code>/opt/mysql/</code> 目录下执行。</p> <p>创建数据文件夹：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 创建 data 目录（用于放置 mysql 数据文件）</span>
+<span class="token function">mkdir</span> data
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>创建用户组，并授权操作：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 为 MySQL 创建一个不能 ssh 登陆的用户，且不创建用户主目录</span>
+<span class="token function">useradd</span> mysql -s /sbin/nologin -M
+<span class="token comment"># 修改文件所有者</span>
+<span class="token function">chown</span> -R mysql:mysql /opt/mysql/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><blockquote><p>在 useradd 命令后跟了两个参数，它们分别表示：</p> <ul><li>-s：表示指定用户所用的 shell，此处为 <code>/sbin/nologin</code>，表示不登录</li> <li>-M：表示不创建用户主目录</li></ul></blockquote> <h3 id="初始化数据库"><a href="#初始化数据库" class="header-anchor">#</a> 初始化数据库</h3> <p>以下步骤需要在 <code>/opt/mysql/</code> 目录下执行。</p> <p>初始化数据库：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>/opt/mysql/mysql-8.0/bin/mysqld --initialize --user<span class="token operator">=</span>mysql --basedir<span class="token operator">=</span>/opt/mysql/mysql-8.0/ --datadir<span class="token operator">=</span>/opt/mysql/data/ --lower_case_table_names<span class="token operator">=</span><span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p>MySQL 8.0 后，在 Linux 端，对于 <code>lower_case_table_names</code> 参数，只又在初始化的时候设置才有效，若初始化的时候没设置，后面修改配置文件后再启动服务就会报错了。</p></blockquote> <p>在这行命令的输出中，这里我们会看到初始密码（应该实在最后一行），记下来：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>A temporary password is generated <span class="token keyword">for</span> root@localhost: <span class="token punctuation">(</span>这个位置的字符串就是临时密码<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="创建-mysql-配置文件-my-cnf"><a href="#创建-mysql-配置文件-my-cnf" class="header-anchor">#</a> 创建 MySQL 配置文件 my.cnf</h3> <p>通过阅读 <code>support-files/mysql.server</code> 这个脚本知道，如果我们的 MySQL 不是安装在默认的 <code>/usr/local/mysql</code> 里，就需要新建一个 <code>/etc/my.cnf</code> 文件，在 <code>[mysqld]</code> 段中设置 <code>basedir</code> 参数。</p> <p>新建文本文档 <code>my.cnf</code>：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 该配置文件必须建立在该目录下</span>
+<span class="token function">vim</span> /etc/my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>将下面的内容添加到该配置文件中（此处是学习用的配置示例，生产环境需要根据实际情况定制，详细参数<a href="https://dev.mysql.com/doc/refman/8.0/en/server-configuration-defaults.html" target="_blank" rel="noopener noreferrer">见官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>[mysqld]
+# mysql 服务的唯一编号，每个 mysql 服务 id 需唯一
+server-id=1
+
+# mysql 服务端口号，默认 3306
+port=3306
+
+# mysql 安装目录，默认 /usr
+basedir=/opt/mysql/mysql-8.0
+
+# mysql 数据文件放置位置
+datadir=/opt/mysql/data
+
+# 记录的是当前 mysqld 进程的 pid
+pid-file=/opt/mysql/mysql-8.0/mysql.pid
+
+# 设置 socket 文件所在目录
+socket=/opt/mysql/mysql-8.0/mysql.sock
+
+# 设置用来保存临时文件的目录
+tmpdir=/opt/mysql/mysql-8.0/tmp
+
+# 用户
+user=mysql
+
+# 允许访问的 IP 网段（系统默认配置监听所有网卡，即允许所有 IP 访问）
+# 生产环境下建议设置为：127.0.0.1（只允许本机访问）或某个网卡的 IP
+bind-address=0.0.0.0
+
+# 数据库默认字符集为 utf8，并支持一些特殊表情符号（占用 4 个字节）
+character-set-server=utf8mb4
+
+# 数据库字符集对应一些排序等规则，注意要和 character-set-server 对应
+collation-server=utf8mb4_general_ci
+
+# 是否对 sql 语句大小写敏感，1 表示不敏感
+lower_case_table_names=1
+
+# 允许最大连接进程数
+max_connections=400
+
+# 最大错误连接数，这是为了防止有人从该主机试图攻击数据库系统
+# 如果某个用户发起的连接 error 超过该数值，则该用户的下次连接将被阻塞，直到管理员执行 flush hosts
+max_connect_errors=100
+
+# TIMESTAMP 如果没有显示声明 NOT NULL，允许 NULL 值
+explicit_defaults_for_timestamp=true
+
+# SQL 数据包发送的大小，如果有 BLOB 对象建议修改成 1G
+max_allowed_packet=128M
+
+# MySQL连接闲置超过一定时间后（秒）将会被强行关闭
+# MySQL 默认的 wait_timeout 值为 8 个小时，interactive_timeout 参数需要同时配置才能生效
+interactive_timeout=1800
+wait_timeout=1800
+
+# 内部内存临时表的最大值，设置成 128M
+# 比如大数据量的 group by，order by 时可能用到临时表
+# 超过了这个值将写入磁盘，系统 IO 压力增大
+tmp_table_size=128M
+max_heap_table_size=128M
+
+# 数据库错误日志文件
+log-error=/opt/mysql/mysql-8.0/err/mysqld.err
+
+# 数据库日志文件存放的位置（一般不会开启该功能，因为 log 的量会非常庞大）
+general_log_file=/opt/mysql/mysql-8.0/log/mysql.log
+# 日志文件是否开启(0 是关闭、1 是开启)
+general_log=0
+
+[client]
+# 默认路径是在 /tmp/mysql.sock
+# 因为我们修改了默认的路径，所以需要在 [client] 段再指定一下
+# 如果不指定，虽然数据库能正常启动，但使用 mysql 命令时还是会报找不到 mysql.sock 错误
+socket=/opt/mysql/mysql-8.0/mysql.sock
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br></div></div><p>创建配置文件中所需的目录：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mkdir</span> /opt/mysql/mysql-8.0/err /opt/mysql/mysql-8.0/tmp
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;&quot;</span> <span class="token operator">&gt;</span> /opt/mysql/mysql-8.0/err/mysqld.err
+<span class="token comment"># 新建了文件，需要再次修改文件所有者</span>
+<span class="token function">chown</span> -R mysql:mysql /opt/mysql/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="配置全局环境变量"><a href="#配置全局环境变量" class="header-anchor">#</a> 配置全局环境变量</h3> <p>MySQL 命令默认读取的是 <code>/usr/local/bin</code> 目录，由于我们修改了 MySQL 的默认安装路径。为了可直接使用 <code>mysql</code> 命令，而不用 <code>/opt/mysql/mysql-8.0/bin/mysql</code> 这样一大串，可以添加环境变量：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">vim</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在最下面添加这两行代码：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code># MySQL
+export PATH=$PATH:/opt/mysql/mysql-8.0/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>保存文件后，执行刷新操作：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="启动-mysql-服务并修改密码"><a href="#启动-mysql-服务并修改密码" class="header-anchor">#</a> 启动 MySQL 服务并修改密码</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 启动 MySQL 服务</span>
+/opt/mysql/mysql-8.0/support-files/mysql.server start
+
+<span class="token comment"># 登录 root 用户，记得输入之前默认生成的密码</span>
+mysql -uroot -p
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>通过下面这句代码就可直接修改密码，不用像之前的老版本一样那么复杂：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 注意跟 5.7 版本的改密命令不同</span>
+ALTER <span class="token environment constant">USER</span> <span class="token string">'root'</span>@<span class="token string">'localhost'</span> IDENTIFIED WITH mysql_native_password BY <span class="token string">'新密码'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>接着需要继续执行命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 刷新权限</span>
+flush privileges<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="开机自启配置"><a href="#开机自启配置" class="header-anchor">#</a> 开机自启配置</h3> <p>下面的命令是将服务文件拷贝到 <code>/etc/init.d/</code> 下，并重命名为 <code>mysqld</code>：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">cp</span> /opt/mysql/mysql-8.0/support-files/mysql.server /etc/init.d/mysqld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>赋予可执行权限：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">chmod</span> +x /etc/init.d/mysqld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>添加服务：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">chkconfig</span> --add mysqld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>显示服务列表：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">chkconfig</span> --list
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>注：如果看到 mysqld 的服务，并且 3，4，5 都是 <code>on</code> 的话则成功，如果是 <code>off</code>，则：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">chkconfig</span> --level <span class="token number">345</span> mysqld on
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>测试开机自启，重启电脑：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">reboot</span>
+<span class="token comment"># 重启后查看 mysql 服务是否开机自启</span>
+<span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> mysql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>接下来可以通过一些命令操作 MySQL 服务：</p> <ul><li>启动 MySQL 服务：<code>service mysql start</code></li> <li>停止 MySQL 服务：<code>service mysql stop</code></li> <li>查看错误日志（如果上面两个命令执行后没效果）：<code>systemctl status mysqld</code></li></ul> <h3 id="开放远程连接"><a href="#开放远程连接" class="header-anchor">#</a> 开放远程连接</h3> <p>先通过 <code>mysql -uroot -p</code> 命令连接 MySQL，然后在 MySQL 窗口下执行如下命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 选择 mysql 这个数据库</span>
+use mysql<span class="token punctuation">;</span>
+<span class="token comment"># 查看原来数据，方便修改以后重置回来</span>
+<span class="token keyword">select</span> host, user, authentication_string, plugin from user<span class="token punctuation">;</span>
+<span class="token comment"># 修改值</span>
+update user <span class="token builtin class-name">set</span> <span class="token assign-left variable">host</span><span class="token operator">=</span><span class="token string">'%'</span> where <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token string">'root'</span> limit <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment"># 刷新权限</span>
+flush privileges<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><blockquote><ul><li><code>host='%'</code> 指的是允许访问 MySQL 的 IP，默认是 <code>localhost</code> 或 <code>127.0.0.1</code>，可以指定具体的某个 IP，也可以是 <code>%</code>（所有 IP 均可访问)。</li> <li><code>user='root'</code> 表示用于访问 MySQL 的用户名，可以改为你自己定义的用户名。</li></ul></blockquote> <p>如果使用 Navicat 连接时报 <code>2003 - Can't connect to MySQL server on ...</code> 错误，就要先看下服务器是不是开启了防火墙但又没开放端口（你可以选择不开防火墙，或者开完防火墙后记得开放 MySQL 监听的端口号）。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 查看状态，发现当前是 dead 状态，即防火墙未开启</span>
+systemctl status firewalld
+
+<span class="token comment"># 开启防火墙，没有任何提示即开启成功</span>
+<span class="token comment"># 再次查看状态，显示 running 即已开启了</span>
+systemctl start firewalld
+
+<span class="token comment"># 开放默认端口号 3306，提示 success，表示设置成功</span>
+firewall-cmd --permanent --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp
+
+<span class="token comment"># 修改后需要重新加载配置才生效</span>
+firewall-cmd --reload<span class="token punctuation">;</span>
+
+<span class="token comment"># 查看已经开放的端口</span>
+firewall-cmd --permanent --list-port
+
+<span class="token comment"># 关闭默认的端口号 3306（如果需要的话，执行这个命令就行了）</span>
+firewall-cmd --permanent --zone<span class="token operator">=</span>public --remove-port<span class="token operator">=</span><span class="token number">3306</span>/tcp
+
+<span class="token comment"># 关闭防火墙（如果需要的话，执行这个命令就行了）</span>
+systemctl stop firewalld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>另外，如果使用的是阿里云等云厂家的服务器，无法连接的原因可能是需要去云管理平台进行一些设置。大致的入口是：</p> <p>进入云服务管理控制平台 ——&gt; 进入云服务器 ——&gt; 选择实例 ——&gt; 管理。</p> <ul><li>阿里云就找到：本实例安全组 --&gt; 配置规则 --&gt; 添加安全组规则，端口范围写 <code>3306/3306</code>，授权对象写 <code>0.0.0.0/0</code>。</li> <li>腾讯云就找到：防火墙 --&gt; 管理规则 --&gt; 添加规则，应用类型下拉框选择 MySQL(3306) 就可以了。</li> <li>如果改了 MySQL 的默认端口，或者想进行更多限制，或者是别的云服务商，稍微摸索下即可，这个没多少坑。</li></ul> <h3 id="卸载-mysql-3"><a href="#卸载-mysql-3" class="header-anchor">#</a> 卸载 MySQL</h3> <p>首先输入命令 <code>ps -ef | grep mysql</code> 检查一下 MySQL 服务是否在运行，在卸载之前需要先停止服务：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">service</span> mysql stop
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>关闭并删除自启动脚本：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /etc/init.d
+<span class="token comment"># 查看该服务进程状态</span>
+<span class="token function">chkconfig</span> --list mysqld
+<span class="token comment"># 删除 chkconfig 管理的 MySQL 启动服务</span>
+<span class="token function">chkconfig</span> --del /etc/init.d/mysqld
+<span class="token comment"># 删除自启动脚本</span>
+<span class="token function">rm</span> -rf /etc/init.d/mysqld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>删除 MySQL 安装目录（如果是按照我上文的步骤安装， 删除安装目录的命令如下）：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">rm</span> -rf /opt/mysql/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>删除 MySQL 配置文件：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">rm</span> /etc/my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>删除环境变量：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">vim</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>删掉之前添加的 MySQL 相关的代码后，保存文件后，执行刷新操作：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>find 查找相关文件并删除：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 查找相关文件</span>
+<span class="token function">find</span> / -name mysql
+
+<span class="token comment"># 判断是否能删除后，执行删除命令</span>
+<span class="token punctuation">..</span>.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>删除 mysql 用户和用户组：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">id</span> mysql
+<span class="token function">userdel</span> -rf mysql
+<span class="token function">groupdel</span> mysql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><blockquote><p>注意：<code>-rf</code> 参数表示删除当前已登陆的用户，并删除与其相关的所有文件。</p> <p>慎用 <code>-r</code> 选项，如果用户目录下有重要文件，删除前请备份。</p></blockquote> <h2 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h2> <ul><li><a href="https://blog.51cto.com/luecsc/1953842" target="_blank" rel="noopener noreferrer">那些你不知道的MySQL配置文件的坑<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <p>（完）</p></div> <!----> <div class="content__content-bottom"></div> <footer class="page-meta"><div class="edit-link"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon edit-icon"><path d="M117.953 696.992 64.306 959.696l265.931-49.336 450.204-452.505-212.284-213.376-450.204 452.513zm496.384-296.326L219.039 797.993l-46.108-46.34L568.233 354.33l46.104 46.335zm345.357-122.99-114.45 115.04-212.288-213.377 114.45-115.035 212.288 213.371zm0 0" fill="currentColor"></path></svg> <a href="https://github.com/wenyuan/fedbook/edit/main/docs/backend/mysql/installation-of-mysql.md" target="_blank" rel="noopener noreferrer">编辑此页</a></div> <div class="meta-item update-time"><span class="label">上次编辑于:</span> <span class="info">2024年6月4日 12:54</span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/backend/mysql/transaction-isolation-levels/" class="prev"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon prev-icon"><path d="M906.783 588.79c-.02 8.499-6.882 15.36-15.38 15.37l-443.7-.01 75.704 191.682c2.52 6.42.482 13.763-5.038 17.91-5.52 4.168-13.138 4.147-18.616-.092L123.228 524.175a15.362 15.362 0 0 1-6-12.165c0-4.782 2.222-9.277 6-12.185L499.753 210.35a15.388 15.388 0 0 1 9.38-3.195c3.236 0 6.502 1.034 9.236 3.103 5.52 4.147 7.578 11.49 5.038 17.91L447.683 419.84l443.72-.01c8.498.01 15.36 6.881 15.36 15.36l.02 153.6z" fill="currentColor"></path></svg>
+        脏读、不可重复读和幻读
+      </a></span> <span class="next"><a href="/backend/mysql/primary-key-and-increment-id/">
+        MySQL 主键和自增 ID
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon next-icon"><path d="M906.772 512c0 4.772-2.211 9.267-5.99 12.175L524.257 813.66a15.37 15.37 0 0 1-18.616.092 15.368 15.368 0 0 1-5.038-17.91l75.714-191.672h-443.73c-8.488 0-15.36-6.881-15.36-15.36v-153.6c0-8.489 6.872-15.36 15.36-15.36h443.73l-75.714-191.682a15.358 15.358 0 0 1 5.048-17.91c5.51-4.158 13.128-4.137 18.606.092l376.525 289.485a15.323 15.323 0 0 1 5.99 12.165z" fill="currentColor"></path></svg></a></span></p></div> <!----> <!----> <div class="content__page-bottom"></div></main> <!----></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.ee898a11.js" defer></script><script src="/assets/js/vendors~layout-Layout.10cc4d4f.js" defer></script><script src="/assets/js/vendors~layout-Blog~layout-Layout~layout-NotFound.134d651c.js" defer></script><script src="/assets/js/page-MySQL的安装与卸载.c971a208.js" defer></script>
+  </body>
+</html>
